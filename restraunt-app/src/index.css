@@ -1,352 +1,317 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto&display=swap');
-*{
-  margin: 0px;
-  padding: 0px;
+
+:root {
+  --gold: #ffb703;
+  --orange: #fb8500;
+  --dark: #0d0d0d;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
-  background-color: black;
+  background-color: var(--dark);
   color: white;
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
 
-
-  .hero {
-    width: 107%;
+/* HERO SECTION */
+.hero {
+  position: relative;
   height: 100vh;
-  background-image: url("https://media.istockphoto.com/id/1388791611/photo/teppanyaki-style.jpg?s=612x612&w=0&k=20&c=gNhQXH4awScPV_ZR3GHXm6PKnz4HtjBS8Y5Oqb3Cs50=");
-  background-size:cover;
-  background-position:center;
-   background-repeat: no-repeat; 
+  background: url("https://t3.ftcdn.net/jpg/06/37/16/64/360_F_637166455_RZOHg6K3M6noLPKQmOHH5ZI70zXEyDaq.jpg") center/cover no-repeat;
   display: flex;
-  justify-content: flex-start;
-   align-items: center;
+  align-items: center;
+}
 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
 
 .content {
- 
-  width:fit-content;
+  position: relative;
+  z-index: 2;
   margin-left: 150px;
+  animation: fadeUp 1s ease;
 }
 
-.welcome{
-  font-family: 'Great Vibes', cursive; 
-  margin-left: 100px;
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.welcome {
+  font-family: 'Great Vibes', cursive;
   font-size: 400%;
-  color:rgb(237, 232, 136);
+  color: var(--gold);
 }
 
-.fine{
+.fine {
   font-family: 'Playfair Display', serif;
   font-size: 300%;
-  color:#EB5B00;
+  color: var(--orange);
 }
 
-.savor{
-  font-family: 'Roboto', sans-serif;
-  margin-left: 70px;
-  padding-top: 5px;
-  color:#FFB200;
+.savor {
+  margin-top: 10px;
+  color: var(--gold);
 }
 
-
- .hero button{
-      background-color: rgb(185, 136, 172);
-      width: 170px;
-      margin-left: 180px;
-      margin-top: 30px;
-      height:60px;
-      border: none;
-      border-radius: 10px;
-      font-size: larger;
-      font-family: 'Great Vibes', cursive;
-
+/* BUTTON */
+button {
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  background: var(--orange);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+/* NAVBAR */
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-
   display: flex;
-  justify-content: center;  
-  align-items: center;
-
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.4);
+  z-index: 9999;
   padding: 20px;
-  color: white;
 }
-
 
 .nav ul {
   display: flex;
   gap: 40px;
   list-style: none;
-  margin: 30px;
-  margin-left:40%;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 200%;
+  gap: 90px;
 }
 
-
 .nav li {
+
   cursor: pointer;
-  font-size: 18px;
-  font-size: xx-large;
-  
+  transition: 0.3s;
+  color: white;
 }
 
 .nav li:hover {
-  color: goldenrod;
+  color: var(--gold);
+  transform: scale(1.1);
 }
 
-.hero button :hover {
-  transform: scale(1.2);
-  color: rgb(33, 37, 65);
-  cursor:pointer;
+/* ABOUT */
+.about {
+  padding: 5%;
+  text-align: center;
+  background: url(https://img.freepik.com/free-photo/dark-wall-with-ornaments_1048-4177.jpg) center/cover;
 }
 
-
-.about{
-  padding:2%;
-   width: 103%;
-   height: 100vh;
-   justify-items: center;
-   align-items: center;
-  background-image: url(https://img.freepik.com/free-photo/dark-wall-with-ornaments_1048-4177.jpg?semt=ais_hybrid&w=740&q=80);
+.section {
+  font-size: 40px;
+  color: var(--gold);
 }
 
-.section{
-  
-  font-size: xx-large;
-  padding: 20px;
-  font-weight: bold;
-  font-style: italic;
-  color: #FFB200;
-
-}
-  p{
-    text-align: center;
-    text-transform: capitalize;
-    max-width: 600px;
-    margin: 20px;
-    line-height: 1.8;
-    font-weight: bolder;
-    font-size:108%;
-    color: rgb(230, 234, 0);
-  }
-
-.menu {
-
-  width: 103%;
-  height: 100vh;
-  padding: 3%;
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh_g0rWf5vu5il4jQNXOsYNn22zgs9dvLiBQ&s);
-  background-size: cover;
-}
-
-.subtext {
-   
-    text-transform: capitalize;
-    font-size:150%;
-    font-weight: 900;
-    font-style: oblique;
-     margin-top: 1%;
-     margin-left: 14%;
-}
-
-.heading {
+.about p {
+  max-width: 600px;
+  margin: 20px auto;
+  line-height: 1.8;
+  color: #ebc20b;
+  font-weight: 700;
+  font-style: oblique;
   text-transform: capitalize;
-  font-size:300%;
-  font-weight: 500;
-   margin-top: 5%;
-  margin-left: 13%;
-  color: rgb(253, 218, 18);
- 
+}
+
+/* MENU */
+.menu {
+  position: relative;
+  padding: 5%;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh_g0rWf5vu5il4jQNXOsYNn22zgs9dvLiBQ&s) center/cover;
 }
 
 .tittle {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size:300%;
-  color: #FFB200;
+  text-transform: capitalize;
+  font-style: oblique;
+  text-align: center;
+  font-weight: 800;
+  font-size: 300%;
+  padding-bottom: 4%;
+  color: #ffb703;
+}
+.heading {
+  font-size: 40px;
+  color: var(--gold);
+  text-transform: capitalize;
+  padding-bottom: 1%;
+  padding-top: 6%;
+ font-size: 350%;
+ padding-left: 15%;
 }
 
+.subtext {
+  text-transform: capitalize;
+  font-weight: 800;
+  font-style: italic;
+  font-size: xx-large;
+  padding-bottom: 15%;
+  color: azure;
+  padding-left: 15%;
+}
+
+
+/* FOOD CARD */
 .food {
-  
   position: relative;
   width: 450px;
-  height: 300px;
-  border-radius: 3px;
-  margin-top: 5%;
-  margin-left: 6%;
-  
-}
-
-.food h1{
-   margin-top: 10%;
-   margin-bottom: 2%;
-   margin-left: 28%;
-   color:darkorange;
-   text-transform: capitalize;
-   
-}
-
-.food button {
-    margin-left: 43%;
-    width: 30%;
-    height: 13%;
-    border-radius: 10px;
-    background-color: #FFB200;
-    font-style: oblique;
-    font-weight: bold;
-    border: none;
-    font-size: larger;
-}
-
-.food button:hover {
-  background-color:#c78d08;
-  cursor: pointer;
-  transform: scale(1.1);
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 30px;
 }
 
 .food img {
-  width: 125%;
-  height: 90%;
-  display: block;
-  object-fit: cover;
+  width: 100%;
+  transition: 0.5s;
 }
 
-.chef {
-  height: 250px;
-  width: 450px;
-  margin-left: 70%;
-   margin-top:-38%; 
-   background-image: url(https://img.freepik.com/photos-gratuite/chef-professionnel-preparant-nourriture-dans-cuisine_23-2149728018.jpg);
-   background-size: cover;
-   
-}
-
-.chef h1 {
-   color:darkorange;
-  text-transform: capitalize;
-  font-size: 200%;
-  margin-top:70%;
-  margin-left: 20%;
-  padding-top: 64%;
-}
-
-.chef button {
-  height: 40px;
-  width: 150px;
-  border: none;
-  border-radius: 10px;
-  margin-top: 3%;
-  margin-left: 30%;
-  background-color: #FFB200;
-  text-transform: capitalize;
-  font-weight: bold;
-  font-size: larger;
-}
-
-.chef button:hover {
-  background-color:#b78308;
-  cursor: pointer;
+.food:hover img {
   transform: scale(1.1);
 }
 
+.food:hover {
+  transform: translateY(-10px);
+}
+
+.food h1 {
+  text-align: center;
+  color: var(--orange);
+  padding-top: 10%;
+  text-transform: capitalize;
+}
+
+.food button {
+  display: block;
+  margin: 10px auto;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+/* CHEF CARD */
+.chef {
+  width: 450px;
+  height: 250px;
+
+  margin-left: auto;   /* ye right push karega 🔥 */
+  margin-right: 50px;  /* thoda gap right se */
+
+  margin-top: 50px;
+  background: url(https://img.freepik.com/photos-gratuite/chef-professionnel-preparant-nourriture-dans-cuisine_23-2149728018.jpg) center/cover;
+  
+   position: relative;
+  top: -500px; 
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s;
+}
+
+.chef:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.chef h1 {
+  text-align: center;
+  padding-top: 150px;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: capitalize;
+  padding-top: 80%;
+}
+
+.chef button {
+  display: block;
+  margin: 10px auto;
+  font-weight: 700;
+}
+
+/* RESERVATION */
 .rev {
-  height:100vh;
-  width: 107%;
-  align-items: center;
-  background-image: url(https://img.freepik.com/premium-photo/dining-black-restaurant-background_87720-45578.jpg);
-  background-size: cover;
+  height: 100vh;
+  background: url(https://img.freepik.com/premium-photo/dining-black-restaurant-background_87720-45578.jpg) center/cover;
+  text-align: center;
+  padding-top: 50px;
 }
 
-.header {
-   text-transform: capitalize;
-   justify-content: center;
-   text-align: center;
-   padding-top: 3%;
-}
-
-.rev h1{
-  font-style: oblique;
-  font-size: 500%;
-  color:#ebd195
+.rev h1 {
+  font-size: 50px;
+  color: #ebd195;
+  text-transform: capitalize;
+  padding-bottom: 1%;
+  font-style: italic;
 }
 
 .rev h3 {
-  padding-top: 1%;
-  font-style: italic;
-  font-size: 150%;
-   color:#FFB200
-}
-
-.dropdowns {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    gap: 180px;
-    padding-top: 6%;
-    font-weight: 600;
-   font-style:oblique;
-   text-transform: capitalize;
-  
-}
-
-.dropdown1 {
-  height: 40px;
- width: 250px;
- text-align: center;
- border-radius: 10px;
- font-weight: 600;
- font-style:oblique;
- text-transform: capitalize;
- background-color: #462802;
- color: white;
-}
-
-.dropdown2{
-   height: 40px;
- width: 250px;
- text-align: center;
- border-radius: 10px;
- font-weight: 600;
- font-style:oblique;
- text-transform: capitalize;
- background-color: #462802;
- color: white;
-}
-
-.dropdown3 {
-   height: 40px;
- width: 250px;
- text-align: center;
- border-radius: 10px;
- font-weight: 600;
- font-style:oblique;
- text-transform: capitalize;
- background-color: #462802;
- color: white;
+  color: var(--gold);
+  text-transform: capitalize;
+  font-style: oblique;
 }
 
 .dropdowns button {
-  height: 40px;
- width: 250px;
- text-align: center;
- border-radius: 10px;
- font-weight: 600;
- font-style:oblique;
- text-transform: capitalize;
- background-color: #FFB200;
- color: white;
-
+  margin-top: -1px;
+  font-weight: 800;
+  font-style: oblique;
 }
 
-.dropdowns button:hover {
-   transform: scale(1.1);
-   background-color: #886a07;
+/* DROPDOWNS */
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
 }
 
+select {
+  height: 45px;
+  width: 220px;
+  border-radius: 8px;
+  background: #1f1f1f;
+  color: white;
+  border: 1px solid #333;
+  text-align: center;
+  transition: 0.3s;
+}
+
+select:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.dropdowns button {
+  width: 220px;
+}
+
+/* FADE */
+.rev, .menu, .about {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
