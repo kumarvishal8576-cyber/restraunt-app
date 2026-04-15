@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  color: white;
+}
+
+
+  .hero {
+    width: 107%;
+  height: 100vh;
+  background-image: url("https://media.istockphoto.com/id/1388791611/photo/teppanyaki-style.jpg?s=612x612&w=0&k=20&c=gNhQXH4awScPV_ZR3GHXm6PKnz4HtjBS8Y5Oqb3Cs50=");
+  background-size:cover;
+  background-position:center;
+   background-repeat: no-repeat; 
+  display: flex;
+  justify-content: flex-start;
+   align-items: center;
+
+}
+
+.content {
+ 
+  width:fit-content;
+  margin-left: 150px;
+}
+
+.welcome{
+  font-family: 'Great Vibes', cursive; 
+  margin-left: 100px;
+  font-size: 400%;
+  color:rgb(237, 232, 136);
+}
+
+.fine{
+  font-family: 'Playfair Display', serif;
+  font-size: 300%;
+  color:#EB5B00;
+}
+
+.savor{
+  font-family: 'Roboto', sans-serif;
+  margin-left: 70px;
+  padding-top: 5px;
+  color:#FFB200;
+}
+
+
+ .hero button{
+      background-color: rgb(185, 136, 172);
+      width: 170px;
+      margin-left: 180px;
+      margin-top: 30px;
+      height:60px;
+      border: none;
+      border-radius: 10px;
+      font-size: larger;
+      font-family: 'Great Vibes', cursive;
+
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+
+  padding: 20px;
+  color: white;
+}
+
+
+.nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 30px;
+  margin-left:40%;
+}
+
+
+.nav li {
+  cursor: pointer;
+  font-size: 18px;
+  font-size: xx-large;
+  
+}
+
+.nav li:hover {
+  color: goldenrod;
+}
+
+.hero button :hover {
+  transform: scale(1.2);
+  color: rgb(33, 37, 65);
+  cursor:pointer;
+}
+
+
+.about{
+  padding:2%;
+   width: 103%;
+   height: 100vh;
+   justify-items: center;
+   align-items: center;
+  background-image: url(https://img.freepik.com/free-photo/dark-wall-with-ornaments_1048-4177.jpg?semt=ais_hybrid&w=740&q=80);
+}
+
+.section{
+  
+  font-size: xx-large;
+  padding: 20px;
+  font-weight: bold;
+  font-style: italic;
+  color: #FFB200;
+
+}
+  p{
+    text-align: center;
+    text-transform: capitalize;
+    max-width: 600px;
+    margin: 20px;
+    line-height: 1.8;
+    font-weight: bolder;
+    font-size:108%;
+    color: rgb(230, 234, 0);
+  }
+
+.menu {
+
+  width: 103%;
+  height: 100vh;
+  padding: 3%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh_g0rWf5vu5il4jQNXOsYNn22zgs9dvLiBQ&s);
+  background-size: cover;
+}
+
+.subtext {
+   
+    text-transform: capitalize;
+    font-size:150%;
+    font-weight: 900;
+    font-style: oblique;
+     margin-top: 1%;
+     margin-left: 14%;
+}
+
+.heading {
+  text-transform: capitalize;
+  font-size:300%;
+  font-weight: 500;
+   margin-top: 5%;
+  margin-left: 13%;
+  color: rgb(253, 218, 18);
+ 
+}
+
+.tittle {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size:300%;
+  color: #FFB200;
+}
+
+.food {
+  
+  position: relative;
+  width: 450px;
+  height: 300px;
+  border-radius: 3px;
+  margin-top: 5%;
+  margin-left: 6%;
+  
+}
+
+.food h1{
+   margin-top: 10%;
+   margin-bottom: 2%;
+   margin-left: 28%;
+   color:darkorange;
+   text-transform: capitalize;
+   
+}
+
+.food button {
+    margin-left: 43%;
+    width: 30%;
+    height: 13%;
+    border-radius: 10px;
+    background-color: #FFB200;
+    font-style: oblique;
+    font-weight: bold;
+    border: none;
+    font-size: larger;
+}
+
+.food button:hover {
+  background-color:#c78d08;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.food img {
+  width: 125%;
+  height: 90%;
+  display: block;
+  object-fit: cover;
+}
+
+.chef {
+  height: 250px;
+  width: 450px;
+  margin-left: 70%;
+   margin-top:-38%; 
+   background-image: url(https://img.freepik.com/photos-gratuite/chef-professionnel-preparant-nourriture-dans-cuisine_23-2149728018.jpg);
+   background-size: cover;
+   
+}
+
+.chef h1 {
+   color:darkorange;
+  text-transform: capitalize;
+  font-size: 200%;
+  margin-top:70%;
+  margin-left: 20%;
+  padding-top: 64%;
+}
+
+.chef button {
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 3%;
+  margin-left: 30%;
+  background-color: #FFB200;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.chef button:hover {
+  background-color:#b78308;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.rev {
+  height:100vh;
+  width: 107%;
+  align-items: center;
+  background-image: url(https://img.freepik.com/premium-photo/dining-black-restaurant-background_87720-45578.jpg);
+  background-size: cover;
+}
+
+.header {
+   text-transform: capitalize;
+   justify-content: center;
+   text-align: center;
+   padding-top: 3%;
+}
+
+.rev h1{
+  font-style: oblique;
+  font-size: 500%;
+  color:#ebd195
+}
+
+.rev h3 {
+  padding-top: 1%;
+  font-style: italic;
+  font-size: 150%;
+   color:#FFB200
+}
+
+.dropdowns {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 180px;
+    padding-top: 6%;
+    font-weight: 600;
+   font-style:oblique;
+   text-transform: capitalize;
+  
+}
+
+.dropdown1 {
+  height: 40px;
+ width: 250px;
+ text-align: center;
+ border-radius: 10px;
+ font-weight: 600;
+ font-style:oblique;
+ text-transform: capitalize;
+ background-color: #462802;
+ color: white;
+}
+
+.dropdown2{
+   height: 40px;
+ width: 250px;
+ text-align: center;
+ border-radius: 10px;
+ font-weight: 600;
+ font-style:oblique;
+ text-transform: capitalize;
+ background-color: #462802;
+ color: white;
+}
+
+.dropdown3 {
+   height: 40px;
+ width: 250px;
+ text-align: center;
+ border-radius: 10px;
+ font-weight: 600;
+ font-style:oblique;
+ text-transform: capitalize;
+ background-color: #462802;
+ color: white;
+}
+
+.dropdowns button {
+  height: 40px;
+ width: 250px;
+ text-align: center;
+ border-radius: 10px;
+ font-weight: 600;
+ font-style:oblique;
+ text-transform: capitalize;
+ background-color: #FFB200;
+ color: white;
+
+}
+
+.dropdowns button:hover {
+   transform: scale(1.1);
+   background-color: #886a07;
+}
+
