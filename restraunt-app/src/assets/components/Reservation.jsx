@@ -32,7 +32,7 @@ const dates = Array.from({ length: daysInMonth }, (_, i) => {
 
         <div className="dropdowns">
 
-          {/* DATE DROPDOWN */}
+    
           <select
             className="dropdown1"
             value={date}
@@ -47,7 +47,7 @@ const dates = Array.from({ length: daysInMonth }, (_, i) => {
             ))}
           </select>
 
-          {/* TIME DROPDOWN */}
+  
           <select className="dropdown2">
             <option>Select time</option>
             <option>10:00 AM</option>
@@ -56,7 +56,7 @@ const dates = Array.from({ length: daysInMonth }, (_, i) => {
             <option>7:00 PM</option>
           </select>
 
-          {/* GUEST DROPDOWN */}
+          
           <select className="dropdown3">
             <option>Guests</option>
             <option>1</option>
