@@ -4,9 +4,10 @@ const About = () => {
   return (
     <div>
         <div className="about">
-        <div className="section">
-            --*ABOUT*--
-        </div>
+           <section id="about">
+             --*ABOUT*--
+           </section>
+          
         <p>_**_ Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quibusdam, sint reprehenderit
              qui error recusandae amet odio pariatur voluptas vero cum veniam nesciunt eaque, 
              voluptates delectus laudantium eos? Temporibus, dolorum.  Lorem ipsum dolor sit amet consectetur, 
@@ -25,6 +26,7 @@ const About = () => {
        </div>
 
     </div>
+
   )
 }
 
