@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 const Reservation = () => {
+  const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
-  // date logic
+  // 📅 Date logic
   const today = new Date();
   const year = today.getFullYear();
   const monthIndex = today.getMonth();
@@ -17,29 +18,54 @@ const Reservation = () => {
     return `${i + 1} ${monthName} ${year}`;
   });
 
-  // 🔥 HANDLE RESERVE
-  const handleReserve = () => {
-    if (!date || !time || !guests) {
-      alert("Please select all fields ❗");
+  // 🔥 HANDLE RESERVATION (BACKEND CONNECTED)
+  const handleReserve = async () => {
+    if (!name || !date || !time || !guests) {
+      alert("Please fill all fields ❗");
       return;
     }
 
-    setShowPopup(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/reservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          date,
+          time,
+          guests,
+        }),
+      });
 
-    // 🔥 RESET AFTER BOOKING
-    setDate("");
-    setTime("");
-    setGuests("");
+      const data = await res.json();
+      console.log("Reservation saved:", data);
 
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 3000);
+      // ✅ show popup
+      setShowPopup(true);
+
+      // ✅ reset form
+      setName("");
+      setDate("");
+      setTime("");
+      setGuests("");
+
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+
+    } catch (err) {
+      console.error(err);
+      alert("Booking failed ❌");
+    }
   };
 
   return (
     <section id="reservation">
       <div className="rev">
 
+        {/* HEADER */}
         <div className="header">
           <h1>reserve your table</h1>
           <h3>experience an unforgettable evening with us</h3>
@@ -47,11 +73,16 @@ const Reservation = () => {
 
         <div className="dropdowns">
 
+          {/* NAME */}
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
           {/* DATE */}
-          <select
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          >
+          <select value={date} onChange={(e) => setDate(e.target.value)}>
             <option value="" disabled hidden>Select Date</option>
 
             {dates.map((d, index) => (
@@ -62,10 +93,7 @@ const Reservation = () => {
           </select>
 
           {/* TIME */}
-          <select
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          >
+          <select value={time} onChange={(e) => setTime(e.target.value)}>
             <option value="" disabled hidden>Select Time</option>
 
             <option value="10:00 AM">10:00 AM</option>
@@ -75,10 +103,7 @@ const Reservation = () => {
           </select>
 
           {/* GUESTS */}
-          <select
-            value={guests}
-            onChange={(e) => setGuests(e.target.value)}
-          >
+          <select value={guests} onChange={(e) => setGuests(e.target.value)}>
             <option value="" disabled hidden>Guests</option>
 
             <option value="1">1</option>
@@ -87,12 +112,13 @@ const Reservation = () => {
             <option value="4">4</option>
           </select>
 
+          {/* BUTTON */}
           <button onClick={handleReserve}>reserve now</button>
 
         </div>
       </div>
 
-      {/* POPUP */}
+      {/* 🎉 POPUP */}
       {showPopup && (
         <div className="popup">
           <div className="popup-content">

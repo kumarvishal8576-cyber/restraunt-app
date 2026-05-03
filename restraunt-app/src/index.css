@@ -126,6 +126,11 @@ button:hover {
   color: var(--gold);
 }
 
+.signin-btn {
+  margin-top: 1px;
+}
+
+
 /* ABOUT */
 .about {
   padding: 5%;
@@ -290,6 +295,34 @@ button:hover {
   font-style: oblique;
 }
 
+
+/* 🔥 RESERVATION INPUT (NAME FIELD) */
+.dropdowns input {
+  height: 45px;
+  width: 220px;
+  border-radius: 8px;
+  background: #1f1f1f;
+  color: white;
+  border: 1px solid #333;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* placeholder styling */
+.dropdowns input::placeholder {
+  color: #aaa;
+  text-align: center;
+}
+
+/* hover + focus effect */
+.dropdowns input:hover,
+.dropdowns input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+
 .dropdowns button {
   margin-top: -1px;
   font-weight: 800;
@@ -375,3 +408,4 @@ select:hover {
   from { transform: scale(0.5); }
   to { transform: scale(1); }
 }
+

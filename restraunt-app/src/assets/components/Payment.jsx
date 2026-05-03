@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./payment.css";
 
 import gpay from "../payments/gpay.png";
@@ -16,21 +16,20 @@ const upiApps = [
   { name: "PayPal", img: paypal },
 ];
 
-
 const Payment = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
+
   const cart = state?.cart || [];
 
   const [method, setMethod] = useState("UPI");
   const [promo, setPromo] = useState("");
   const [discount, setDiscount] = useState(0);
-  
-
-  //  NEW STATES
   const [upiId, setUpiId] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  // 🧮 TOTAL
   const subtotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -38,7 +37,7 @@ const Payment = () => {
 
   const total = subtotal - discount;
 
-  //  COUPON
+  // 🎟️ COUPON
   const applyPromo = () => {
     if (promo === "SAVE50") {
       setDiscount(50);
@@ -47,48 +46,73 @@ const Payment = () => {
     }
   };
 
-  const handlePayment = () => {
-  if (cart.length === 0) return;
+  // 🔥 PAYMENT + BACKEND
+  const handlePayment = async () => {
+    if (cart.length === 0) {
+      alert("Cart is empty ❗");
+      return;
+    }
 
-  if (method === "UPI" && upiId.trim() === "") {
-    alert("Enter UPI ID ❗");
-    return;
-  }
+    if (method === "UPI" && upiId.trim() === "") {
+      alert("Enter UPI ID ❗");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  setTimeout(() => {
-    setLoading(false);
-    setSuccess(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cart,
+          total,
+          paymentMethod: method,
+          status: "paid",
+          createdAt: new Date(),
+        }),
+      });
 
-    // ⏳ popup ke baad reset
-    setTimeout(() => {
-      setSuccess(false);
+      const data = await res.json();
+      console.log("Order Saved:", data);
 
-      // 🔥 RESET EVERYTHING
-      setUpiId("");
-      setPromo("");
-      setDiscount(0);
-      setMethod("UPI");
+      if (!res.ok) throw new Error(data.message);
 
-    }, 2000);
+      // ✅ SUCCESS
+      setLoading(false);
+      setSuccess(true);
 
-  }, 2000);
-};
+      setTimeout(() => {
+        setSuccess(false);
 
- 
+        // RESET
+        setUpiId("");
+        setPromo("");
+        setDiscount(0);
+        setMethod("UPI");
+
+      }, 2000);
+
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+      alert("Payment failed ❌");
+    }
+  };
 
   return (
     <div className="payment-container">
 
       <h1>💳 Payment</h1>
 
-      {/*  ORDER SUMMARY */}
+      {/* 🧾 ORDER SUMMARY */}
       <div className="summary">
         <h3>Order Summary</h3>
 
-        {cart.map((item) => (
-          <div key={item.id} className="summary-item">
+        {cart.map((item, index) => (
+          <div key={index} className="summary-item">
             <span>{item.name} x {item.quantity}</span>
             <span>₹{item.price * item.quantity}</span>
           </div>
@@ -99,10 +123,9 @@ const Payment = () => {
         </div>
       </div>
 
-      {/*  MAIN LAYOUT */}
       <div className="payment-layout">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <div className="payment-methods">
           {["UPI", "Card", "Debit Card", "Credit Card", "Cash"].map((m) => (
             <div
@@ -115,10 +138,10 @@ const Payment = () => {
           ))}
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <div className="payment-details">
 
-          {/*  UPI SECTION */}
+          {/* UPI */}
           {method === "UPI" && (
             <>
               <div className="upi-options">
@@ -134,11 +157,10 @@ const Payment = () => {
                 </div>
               </div>
 
-              {/* UPI INPUT */}
               <div className="upi-input">
                 <input
                   type="text"
-                  placeholder="Enter UPI ID (e.g. name@upi)"
+                  placeholder="Enter UPI ID"
                   value={upiId}
                   onChange={(e) => setUpiId(e.target.value)}
                 />
@@ -146,7 +168,7 @@ const Payment = () => {
             </>
           )}
 
-          {/* CARD FORM */}
+          {/* CARD */}
           {(method === "Card" || method === "Debit Card" || method === "Credit Card") && (
             <div className="card-form">
               <input type="text" placeholder="Card Number" />
@@ -159,30 +181,39 @@ const Payment = () => {
           )}
 
           {/* CASH */}
-          {method === "Cash" && (
-            <p>Pay at delivery 🚚</p>
-          )}
+          {method === "Cash" && <p>Pay at delivery 🚚</p>}
 
-          {/*  PROMO */}
+          {/* COUPON */}
           <div className="promo">
             <input
               type="text"
-              placeholder="Enter Coupon Code if any"
+              placeholder="Enter Coupon Code"
               value={promo}
               onChange={(e) => setPromo(e.target.value)}
             />
             <button onClick={applyPromo}>Apply</button>
           </div>
 
-          {/* 💳 PAY BUTTON */}
+          {/* PAY */}
           <button className="pay-btn" onClick={handlePayment}>
             {loading ? "Processing..." : `Pay ₹${total}`}
+          </button>
+
+          {/* 🔥 ORDER HISTORY BUTTON */}
+          <button
+            className="history-page-btn"
+            onClick={() => {
+              navigate("/orders");
+              window.scrollTo(0, 0);
+            }}
+          >
+            View Order History 📜
           </button>
 
         </div>
       </div>
 
-      {/*  SUCCESS POPUP */}
+      {/* SUCCESS */}
       {success && (
         <div className="popup">
           <div className="popup-content">

@@ -269,3 +269,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.history-page-btn {
+  margin: 25px auto;
+  display: block;
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: 1px solid gold;
+  background: transparent;
+  color: gold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.history-page-btn:hover {
+  background: gold;
+  color: black;
+  box-shadow: 0 0 15px gold;
+}
